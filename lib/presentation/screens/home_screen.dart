@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:to_do_list/presentation/providers/notes_providers.dart';
 
 import '../widgets/widgets.dart';
@@ -11,18 +12,14 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
 
-  //   final List<Color> containerColors = [
-  //   const Color(0xFFB0BBBC),
-  //   const Color(0xFFE4B875),
-  //   const Color(0xFFBBB2CC),
-  //   const Color(0xFF5FBDF5),
-  //   const Color(0xFF4FC2BC),
-  //   // Agrega más colores según sea necesario
-  // ];
-
   final noteProvider = ref.watch( noteProviderProvider );
+  Color? colorButton = Colors.grey[600];
+  Color? colorIcon = Colors.grey[50];
 
     return Scaffold(
+
+      backgroundColor: Colors.grey[50],
+
       body: CustomScrollView(
         slivers: [
           
@@ -50,30 +47,58 @@ class HomeScreen extends ConsumerWidget {
             );
           }),
 
+          const SliverToBoxAdapter(
+            child: SizedBox(height: 10),
+          ),
+
         ],
       ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+      
+      floatingActionButton: SpeedDial(
+        buttonSize: const Size(60, 60),
+        childrenButtonSize: const Size(62, 62),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        animatedIcon: AnimatedIcons.menu_close,
+        animatedIconTheme: IconThemeData(size: 22, color: colorIcon),
+        backgroundColor: colorButton,
+        visible: true,
+        curve: Curves.bounceIn,
+        spacing: 8,
+        spaceBetweenChildren: 10,
         children: [
 
-          FloatingActionButton(
-            onPressed: () {
+          SpeedDialChild(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(Icons.add, size: 28, color: colorIcon,),
+            backgroundColor: colorButton,
+            onTap: () {
               ref.read(noteProviderProvider.notifier).addNote();
             },
-            child: const Icon(Icons.add),
+            label: 'Add note',
+            labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15.5, color: colorIcon),
+            labelBackgroundColor: colorButton,
           ),
 
-          const SizedBox(height: 15),
-
-          FloatingActionButton(
-            onPressed: () {
+          SpeedDialChild(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Icon(Icons.delete, size: 28, color: colorIcon,),
+            backgroundColor: colorButton,
+            onTap: () {
               ref.read(noteProviderProvider.notifier).removeAllNotes();
             },
-            child: const Icon(Icons.delete),
+            label: 'Delete all notes',
+            labelStyle: TextStyle(fontWeight: FontWeight.w500, fontSize: 15.5, color: colorIcon),
+            labelBackgroundColor: colorButton,
           ),
 
         ],
-      )
+      ),
     );
   }
 }

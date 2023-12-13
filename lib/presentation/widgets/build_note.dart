@@ -35,13 +35,13 @@ class BuildNote extends ConsumerWidget {
           color: color,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),),
-              Text(description, style: TextStyle(fontSize: 18),),
+              Text(title, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 24),),
+              Text(description, style: const TextStyle(fontSize: 18),),
             ],
           ),
         ),

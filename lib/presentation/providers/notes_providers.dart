@@ -14,13 +14,11 @@ const uuid = Uuid();
 
 // Lista de colores para asignar a las notas
 final List<Color> containerColors = [
-  const Color(0xFFFFB4B4),
-  const Color(0xFFB0BBBC),
-  const Color(0xFFE4B875),
-  const Color(0xFFBBB2CC),
-  const Color(0xFF5FBDF5),
-  const Color(0xFF4FC2BC),
-  const Color(0xFFFDF7C3),
+  Colors.orange[100]!,
+  Colors.red[100]!,
+  Colors.blue[100]!,
+  Colors.green[100]!,
+  Colors.purple[100]!,
   // Agrega más colores según sea necesario
 ];
 
@@ -34,16 +32,16 @@ class NoteProvider extends _$NoteProvider {
   // Método para construir la lista inicial de notas
   @override
   List<Note> build() => [
-        _createNote("Title 1", "Description 1"),
-        _createNote("Title 2", "Description 2"),
-        _createNote("Title 3", "Description 3"),
+        _createNote("Title", "Description"),
+        _createNote("Title", "Description"),
+        _createNote("Title", "Description"),
       ];
 
   // Método para agregar una nueva nota a la lista
   void addNote() {
     state = [
       ...state,
-      _createNote("Title ${state.length + 1}", "Description ${state.length + 1}"),
+      _createNote("Title", "Description"),
     ];
   }
 
