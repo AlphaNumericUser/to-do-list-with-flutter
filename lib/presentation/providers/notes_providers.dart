@@ -32,16 +32,14 @@ class NoteProvider extends _$NoteProvider {
   // Método para construir la lista inicial de notas
   @override
   List<Note> build() => [
-        _createNote("Title", "Description"),
-        _createNote("Title", "Description"),
-        _createNote("Title", "Description"),
+        _createNote("My first note :)", "Hi there!"),
       ];
 
-  // Método para agregar una nueva nota a la lista
-  void addNote() {
+  // Método para agregar una nueva nota a la lista, pedirá un título y una descripción
+  void addNote(String title, String description) {
     state = [
       ...state,
-      _createNote("Title", "Description"),
+      _createNote(title, description),
     ];
   }
 

@@ -8,7 +8,14 @@ final router = GoRouter(
     //! General
     GoRoute(
       path: '/',
+      name: HomeScreen.name,
       builder: (context, state) => const HomeScreen(),
+    ),
+
+    GoRoute(
+      path: '/note-screen',
+      name: NoteScreen.name,
+      builder: (context, state) => const NoteScreen(),
     ),
 
 
