@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:to_do_list/presentation/providers/title_controller_provider.dart';
 
 import '../providers/providers.dart';
 import 'screens.dart';
@@ -9,7 +8,7 @@ import 'screens.dart';
 class NoteScreen extends  ConsumerStatefulWidget {
   static const String name = 'note-screen';
 
-  const NoteScreen({Key? key}) : super(key: key);
+  const NoteScreen({super.key});
 
   @override
   NoteScreenState createState() => NoteScreenState();
