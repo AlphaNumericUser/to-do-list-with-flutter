@@ -36,7 +36,18 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               context.pushNamed(HomeScreen.name);
               String title = ref.read( titleControllerProvider ).text;
               String description = ref.read( descriptionControllerProvider ).text;
-              ref.read(noteProviderProvider.notifier).addNote(title, description);
+              // * Si no hay título o descripción, no se guarda la nota
+              if (title.isEmpty && description.isEmpty) return ;
+              // * Guardar la nota en multiples casos
+              if (title.isNotEmpty && description.isEmpty ){
+                description = description.isEmpty ? '...' : description;
+                ref.read(noteProviderProvider.notifier).addNote(title, description);
+              } else if (title.isEmpty && description.isNotEmpty){
+                title = title.isEmpty ? '...' : title;
+                ref.read(noteProviderProvider.notifier).addNote(title, description);
+              } else if (title.isNotEmpty && description.isNotEmpty){
+                ref.read(noteProviderProvider.notifier).addNote(title, description);
+              }
             },
           ),
         ],
@@ -45,6 +56,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         children: [
           TextField(
+            textCapitalization: TextCapitalization.sentences,
             controller: titleController,
             onChanged: (text) {
               setState(() {}); // Esto vuelve a construir el widget al cambiar el texto
@@ -57,6 +69,7 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
           ),
           const SizedBox(height: 10),
           TextField(
+            textCapitalization: TextCapitalization.sentences,
             controller: descriptionController,
             decoration: const InputDecoration(
               hintText: 'Enter your note here',
