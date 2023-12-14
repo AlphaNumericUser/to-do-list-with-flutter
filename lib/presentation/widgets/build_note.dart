@@ -29,7 +29,7 @@ class BuildNote extends ConsumerWidget {
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        height: 140,
+        height: 160,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: color,
@@ -40,8 +40,8 @@ class BuildNote extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 24),),
-              Text(description, style: const TextStyle(fontSize: 18),),
+              Text(title, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 24), maxLines: 2,),
+              Text(description, style: const TextStyle(fontSize: 18), maxLines: 3,),
             ],
           ),
         ),

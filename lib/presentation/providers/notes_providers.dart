@@ -19,6 +19,7 @@ final List<Color> containerColors = [
   Colors.blue[100]!,
   Colors.green[100]!,
   Colors.purple[100]!,
+  Colors.teal[100]!,
   // Agrega más colores según sea necesario
 ];
 

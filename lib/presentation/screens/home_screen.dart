@@ -5,7 +5,6 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:go_router/go_router.dart';
 import 'package:to_do_list/presentation/providers/notes_providers.dart';
 
-import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 import 'screens.dart';
 
@@ -54,7 +53,7 @@ class HomeScreen extends ConsumerWidget {
           }),
 
           const SliverToBoxAdapter(
-            child: SizedBox(height: 10),
+            child: SizedBox(height: 80),
           ),
 
         ],
@@ -82,8 +81,6 @@ class HomeScreen extends ConsumerWidget {
             child: Icon(Icons.add, size: 28, color: colorIcon,),
             backgroundColor: colorButton,
             onTap: () {
-              ref.read(titleControllerProvider).text = '';
-              ref.read(descriptionControllerProvider).text = '';
               context.pushNamed(NoteScreen.name);
             },
             label: 'Add note',
