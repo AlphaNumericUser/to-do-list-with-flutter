@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:go_router/go_router.dart';
-import 'package:to_do_list/presentation/providers/notes_providers.dart';
 
 import '../providers/providers.dart';
 import '../widgets/widgets.dart';

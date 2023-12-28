@@ -10,3 +10,17 @@ class TitleController extends _$TitleController {
     return TextEditingController();
   }
 }
+
+@riverpod
+class SelectedTitleController extends _$SelectedTitleController {
+
+  @override
+  TextEditingController build() {
+    return TextEditingController();
+  }
+
+  void updateSelectedTitle(String title) {
+    state = TextEditingController(text: title);
+  }
+
+}

@@ -70,4 +70,21 @@ class NoteProvider extends _$NoteProvider {
   void removeAllNotes() {
     state = [];
   }
+
+  Note findById(String id) {
+    return state.firstWhere((note) => note.id == id);
+  }
+
+}
+
+@riverpod
+class SelectedNote extends _$SelectedNote {
+  @override
+  Note build() {
+    return Note(id:'', title: '', description: '', color: Colors.white);
+  }
+
+  void updateSelectedNote (Note note) {
+    state = note;
+  }
 }

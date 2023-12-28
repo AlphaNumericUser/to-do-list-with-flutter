@@ -11,3 +11,17 @@ class DescriptionController extends _$DescriptionController {
     return TextEditingController();
   }
 }
+
+@riverpod
+class SelectedDescriptionController extends _$SelectedDescriptionController {
+  
+  @override
+  TextEditingController build() {
+    return TextEditingController();
+  }
+
+  void updateSelectedDescription(String description) {
+    state = TextEditingController(text: description);
+  }
+
+}
