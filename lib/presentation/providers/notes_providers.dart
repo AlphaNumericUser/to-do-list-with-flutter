@@ -33,11 +33,6 @@ class NoteProvider extends _$NoteProvider {
   @override
   List<Note> build() => [
         _createNote("My first note :)", "Hi there!"),
-        _createNote("My first note :)", "Hi there!"),
-        _createNote("My first note :)", "Hi there!"),
-        _createNote("My first note :)", "Hi there!"),
-        _createNote("My first note :)", "Hi there!"),
-        _createNote("My first note :)", "Hi there!"),
       ];
 
   // Método para agregar una nueva nota a la lista, pedirá un título y una descripción
