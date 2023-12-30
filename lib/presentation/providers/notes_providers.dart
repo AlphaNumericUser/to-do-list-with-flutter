@@ -75,6 +75,15 @@ class NoteProvider extends _$NoteProvider {
     return state.firstWhere((note) => note.id == id);
   }
 
+  void updateNoteTitle(String id, String title, String description) {
+    state = state.map((note) {
+      if (note.id == id) {
+        return note.copyWith(title: title, description: description);
+      }
+      return note;
+    }).toList();
+  }
+
 }
 
 @riverpod

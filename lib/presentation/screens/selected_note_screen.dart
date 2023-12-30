@@ -29,17 +29,23 @@ class NoteScreenState extends ConsumerState<SelectedNoteScreen> {
   Widget build(BuildContext context) {
     final selectedNote = ref.watch(selectedNoteProvider);
     final selectedTitleController = ref.watch(selectedTitleControllerProvider);
-    final descriptionController = ref.watch(selectedDescriptionControllerProvider);
+    final selectedDescriptionController = ref.watch(selectedDescriptionControllerProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(selectedNote.title.isEmpty ? 'New note' : selectedNote.title),
+        title: Text(selectedTitleController.text.isEmpty ? 'New note' : selectedTitleController.text),
         automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
               context.pushNamed(HomeScreen.name);
+              ref.read(noteProviderProvider.notifier).
+                updateNoteTitle(
+                  selectedNote.id, 
+                  selectedTitleController.text, 
+                  selectedDescriptionController.text
+                );
             },
           ),
         ],
@@ -62,7 +68,7 @@ class NoteScreenState extends ConsumerState<SelectedNoteScreen> {
           const SizedBox(height: 10),
           TextField(
             textCapitalization: TextCapitalization.sentences,
-            controller: descriptionController,
+            controller: selectedDescriptionController,
             decoration: const InputDecoration(
               hintText: 'Enter your note here',
               border: InputBorder.none,
