@@ -6,7 +6,7 @@ part of 'notes_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteProviderHash() => r'830aa8c6cd1ff0cb61b19cec26031fc1209c646b';
+String _$noteProviderHash() => r'a7d470ee45b23ad8fe3fcbba7c8767fcbda68366';
 
 /// See also [NoteProvider].
 @ProviderFor(NoteProvider)
@@ -21,7 +21,7 @@ final noteProviderProvider =
 );
 
 typedef _$NoteProvider = AutoDisposeNotifier<List<Note>>;
-String _$selectedNoteHash() => r'2888ed61253eb5984e30fb0ac7d9e2fb56f9609a';
+String _$selectedNoteHash() => r'bbc4c29d4fa6c649febdc52675600fe3897d95c7';
 
 /// See also [SelectedNote].
 @ProviderFor(SelectedNote)

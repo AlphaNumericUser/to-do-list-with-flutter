@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +12,7 @@ class BuildNote extends ConsumerWidget {
   final String id;
   final String title;
   final String description;
-  final Color color;
+  final String color; // Change the type from Color to String
 
   const BuildNote({super.key, 
     required this.id,
@@ -45,7 +44,7 @@ class BuildNote extends ConsumerWidget {
           height: 160,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: color,
+            color: Color(int.parse(color.substring(1), radix: 16) + 0xFF000000), // Convert the color string to a Color object
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
@@ -63,4 +62,3 @@ class BuildNote extends ConsumerWidget {
     );
   }
 }
-

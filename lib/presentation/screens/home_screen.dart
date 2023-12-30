@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -44,7 +43,7 @@ class HomeScreen extends ConsumerWidget {
                     id: noteProvider[index].id,
                     title: noteProvider[index].title,
                     description: noteProvider[index].description,
-                    color: noteProvider[index].color,
+                     color: noteProvider[index].color, // Convert the color string to a Color object
                   );
                 },
                 childCount: noteProvider.length,

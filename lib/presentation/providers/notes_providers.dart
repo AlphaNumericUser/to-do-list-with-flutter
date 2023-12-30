@@ -1,5 +1,4 @@
 // Importaciones necesarias para Flutter y paquetes externos
-import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
@@ -13,13 +12,13 @@ part 'notes_providers.g.dart';
 const uuid = Uuid();
 
 // Lista de colores para asignar a las notas
-final List<Color> containerColors = [
-  Colors.orange[100]!,
-  Colors.red[100]!,
-  Colors.blue[100]!,
-  Colors.green[100]!,
-  Colors.purple[100]!,
-  Colors.teal[100]!,
+final List<String> containerColors = [
+  "#84b6f4", // Light Blue
+  "#FF8080", // Tomato Red
+  "#0BEADFA",// Purple
+  "#F1CA89", // Brown
+  "#9CF196", // Teal
+  "#FFD5CD", // Pink
   // Agrega más colores según sea necesario
 ];
 
@@ -33,6 +32,11 @@ class NoteProvider extends _$NoteProvider {
   // Método para construir la lista inicial de notas
   @override
   List<Note> build() => [
+        _createNote("My first note :)", "Hi there!"),
+        _createNote("My first note :)", "Hi there!"),
+        _createNote("My first note :)", "Hi there!"),
+        _createNote("My first note :)", "Hi there!"),
+        _createNote("My first note :)", "Hi there!"),
         _createNote("My first note :)", "Hi there!"),
       ];
 
@@ -90,7 +94,7 @@ class NoteProvider extends _$NoteProvider {
 class SelectedNote extends _$SelectedNote {
   @override
   Note build() {
-    return Note(id:'', title: '', description: '', color: Colors.white);
+    return Note(id:'', title: '', description: '', color: "#FFFFFF"); // White
   }
 
   void updateSelectedNote (Note note) {
