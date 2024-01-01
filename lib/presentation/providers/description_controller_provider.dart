@@ -10,6 +10,10 @@ class DescriptionController extends _$DescriptionController {
   TextEditingController build() {
     return TextEditingController();
   }
+
+  void updateDescription(String description) {
+    state = TextEditingController(text: description);
+  }
 }
 
 @riverpod

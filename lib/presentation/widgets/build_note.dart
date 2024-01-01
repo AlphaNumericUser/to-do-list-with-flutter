@@ -12,7 +12,7 @@ class BuildNote extends ConsumerWidget {
   final String id;
   final String title;
   final String description;
-  final String color; // Change the type from Color to String
+  final String color; 
 
   const BuildNote({super.key, 
     required this.id,

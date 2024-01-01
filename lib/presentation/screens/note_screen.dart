@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:to_do_list/domain/entities/note.dart';
 
 import '../providers/providers.dart';
 import 'screens.dart';
@@ -16,10 +17,20 @@ class NoteScreen extends  ConsumerStatefulWidget {
 }
 
 class NoteScreenState extends ConsumerState<NoteScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      Note newNote = ref.read(newNoteProvider);
+      ref.read(titleControllerProvider.notifier).updateTitle(newNote.title);
+      ref.read(descriptionControllerProvider.notifier).updateDescription(newNote.description);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
 
+    Note newNote = ref.watch(newNoteProvider);
     final titleController = ref.watch( titleControllerProvider );
     final descriptionController = ref.watch( descriptionControllerProvider );
 
@@ -36,6 +47,13 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               context.pushNamed(HomeScreen.name);
               String title = ref.read( titleControllerProvider ).text;
               String description = ref.read( descriptionControllerProvider ).text;
+              String color = newNote.color;
+              String id = newNote.id;
+              print('Title: $title');
+              print('Description: $description');
+              print('ID: $id');
+              print('Color: $color');
+
               // * Si no hay título o descripción, no se guarda la nota
               if (title.isEmpty && description.isEmpty) return ;
               // * Guardar la nota en multiples casos
@@ -48,10 +66,14 @@ class NoteScreenState extends ConsumerState<NoteScreen> {
               } else if (title.isNotEmpty && description.isNotEmpty){
                 ref.read(noteProviderProvider.notifier).addNote(title, description);
               }
-              FirebaseFirestore.instance.collection('notes').add({
-                'title': title,
-                'description': description,
-              });
+
+              //TODO: Agregar los datos faltantes a la nota
+              // FirebaseFirestore.instance.collection('notes').add({
+              //   'title': title,
+              //   'description': description,
+              //   'color': color,
+              //   'id': id,
+              // });
             },
           ),
         ],

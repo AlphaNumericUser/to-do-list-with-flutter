@@ -9,6 +9,10 @@ class TitleController extends _$TitleController {
   TextEditingController build() {
     return TextEditingController();
   }
+
+  void updateTitle(String title) {
+    state = TextEditingController(text: title);
+  }
 }
 
 @riverpod

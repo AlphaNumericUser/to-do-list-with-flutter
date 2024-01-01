@@ -32,19 +32,19 @@ class NoteProvider extends _$NoteProvider {
   // Método para construir la lista inicial de notas
   @override
   List<Note> build() => [
-        _createNote("My first note :)", "Hi there!"),
+        createNote("My first note :)", "Hi there!"),
       ];
 
   // Método para agregar una nueva nota a la lista, pedirá un título y una descripción
   void addNote(String title, String description) {
     state = [
       ...state,
-      _createNote(title, description),
+      createNote(title, description),
     ];
   }
 
   // Método privado para crear una nueva nota con un color asignado
-  Note _createNote(String title, String description) {
+  Note createNote(String title, String description) {
     int nextColorIndex;
     // Ciclo para asegurarse de que el próximo color no sea igual al último
     do {
@@ -93,6 +93,18 @@ class SelectedNote extends _$SelectedNote {
   }
 
   void updateSelectedNote (Note note) {
+    state = note;
+  }
+}
+
+@riverpod
+class NewNote extends _$NewNote {
+  @override
+  Note build() {
+    return Note(id: '', title: '', description: '', color: '');
+  }
+
+  void updateNewNote (Note note) {
     state = note;
   }
 }

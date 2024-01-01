@@ -6,7 +6,7 @@ part of 'title_controller_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$titleControllerHash() => r'4e380d47ada02a548f4bcd056584b3d58841e1e2';
+String _$titleControllerHash() => r'717fce7cff9e246ae57f75dbc6bb8ed5e8098686';
 
 /// See also [TitleController].
 @ProviderFor(TitleController)

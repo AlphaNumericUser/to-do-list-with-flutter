@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../domain/entities/note.dart';
 import '../providers/providers.dart';
 import '../widgets/widgets.dart';
 import 'screens.dart';
@@ -43,7 +44,7 @@ class HomeScreen extends ConsumerWidget {
                     id: noteProvider[index].id,
                     title: noteProvider[index].title,
                     description: noteProvider[index].description,
-                     color: noteProvider[index].color, // Convert the color string to a Color object
+                    color: noteProvider[index].color, // Convert the color string to a Color object
                   );
                 },
                 childCount: noteProvider.length,
@@ -82,6 +83,15 @@ class HomeScreen extends ConsumerWidget {
             onTap: () {
               ref.read(titleControllerProvider).text = '';
               ref.read(descriptionControllerProvider).text = '';
+              // Crear una nueva nota con un título y descripción vacíos
+              //TODO: Quizá el problema del primer id se solucione si lo
+              //TODO: generamos aquí y no en el provider
+              Note newNote = ref.read(noteProviderProvider.notifier).createNote('', '');
+              // Actualizar selectedNoteProvider y newNoteProvider con la nueva nota
+              ref.read(newNoteProvider.notifier).updateNewNote(newNote);
+              // Imprimir el id y color de la nueva nota para verificar si se actualizó correctamente
+              Note updatedNote = ref.read(newNoteProvider);
+              print('ID: ${updatedNote.id}, Color: ${updatedNote.color}');
               context.pushNamed(NoteScreen.name);
             },
             label: 'Add note',
